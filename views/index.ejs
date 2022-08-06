@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>URL Shortener</title>
+        <link rel="stylesheet" href="/output.css" />
+    </head>
+
+    <body class="bg-gray-500">
+        <div class="max-w-6xl mx-auto px-5">
+            <div
+                class="p-4 my-8 bg-gray-800 border border-gray-700 rounded-lg sm:p-6 lg:p-8"
+            >
+                <form action="/" method="post" id="eventForm">
+                    <div class="flex items-end">
+                        <input
+                            type="url"
+                            class="bg-gray-700 border border-gray-600 placeholder-gray-400 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mr-3"
+                            name="url"
+                            id="url"
+                            required
+                            placeholder="Paste long link here"
+                        />
+                        <div>
+                            <input
+                                type="submit"
+                                value="Shorten"
+                                class="cursor-pointer text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                            />
+                        </div>
+                    </div>
+                </form>
+
+                <% if (locals.short_url) { %>
+                    <div class="mt-7">
+                        <input
+                            type="text"
+                            disabled
+                            id="shorten_url"
+                            class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg block w-full p-2.5"
+                            value=<%= short_url %>
+                        />
+                    </div>
+                <% } %>
+                <% if (locals.error) { %>
+                    <p class="error"><%= error %></p>
+                <% } %>
+            </div>
+        </div>
+    </body>
+</html>
